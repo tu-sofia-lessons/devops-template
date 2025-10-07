@@ -1,0 +1,10 @@
+paths:
+release-notes/: "@release-Team"
+ops/: "@ops-team"
+monitoring/: "@monitoring-team"
+governance/: "@governance-team"
+runbooks/*: "@incident-team"
+
+Team IR (Incident Response)
+
+Files: runbooks/incident-response.yaml, runbooks/postmortem-template.yaml, runbooks/severity-matrix.yaml
