@@ -1,5 +1,10 @@
-Please provide information of the reason for the pull request.
+## Description
+What does this PR change?
 
-# What
+## Checklist
+- [ ] Files updated for my role
+- [ ] Changelog updated if relevant
+- [ ] Followed the style guide
 
-# Why
+## Testing
+How was it verified (readthrough, peer review)?

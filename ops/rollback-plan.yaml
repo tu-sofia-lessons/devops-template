@@ -1,0 +1,8 @@
+version: 1.0
+triggers:
+  - missing-approvals
+  - critical-doc-errors
+steps:
+  - restore-from-backup: latest
+  - notify-stakeholders: [release, ops, leads]
+  - document-findings: runbooks/postmortem-template.md

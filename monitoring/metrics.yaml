@@ -1,0 +1,9 @@
+kpis:
+  - name: lead_time_for_changes
+    target: "≤ 1 day"
+  - name: review_completion_rate
+    target: "≥ 90%"
+alerts:
+  - name: stalled_prs
+    condition: "no activity > 24h"
+    channel: "team-chat"

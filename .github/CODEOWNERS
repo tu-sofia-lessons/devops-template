@@ -1,0 +1,5 @@
+/release-notes/*         @release-team
+/ops/*                   @ops-team
+/monitoring/*            @monitoring-team
+/governance/*            @docs-standards-team
+/runbooks/*              @incident-response-team

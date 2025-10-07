@@ -1,0 +1,13 @@
+version: 1.0
+prechecks:
+  - verify-owners
+  - validate-docs
+rollout:
+  strategy: staged
+  steps:
+    - announce-window
+    - back-up-docs
+    - apply-changes
+verification:
+  - smoke-readthrough
+  - peer-review-passed
