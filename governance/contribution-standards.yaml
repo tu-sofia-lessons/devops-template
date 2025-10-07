@@ -1,0 +1,4 @@
+branches: {pattern: "feature/-r1.0"}
+commits: {convention: "conventional-commits"}
+prs: {min_reviews: 1, cross_team: true}
+labels: [feature, hotfix, review-needed, blocked]

@@ -1,0 +1,5 @@
+policy_version: "1.0"
+headings: {h1: "#", h2: "##", h3: "###"}
+lists: {preferred: "bullets", max_line_length: 100}
+dates: {format: "YYYY-MM-DD"}
+filenames: kebab-case
