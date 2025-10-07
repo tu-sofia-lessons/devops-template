@@ -1,3 +1,4 @@
+---
 kpis:
   - name: lead_time_for_changes
     target: "≤ 1 day"
