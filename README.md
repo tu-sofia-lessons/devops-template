@@ -30,23 +30,23 @@ By the end of this session, you will be able to:
 
 Assign roles (combine if you have smaller groups):
 
-1. **Release Notes Team**  
+**Release Notes Team** for all teams
    - Files: `release-notes/1.0/summary.md`, `release-notes/1.0/changelog.md`  
    - Task: summarize scope, list changes, and maintain the changelog.
 
-2. **Operations Plan Team**  
+1. **Operations Plan Team**  
    - Files: `ops/rollout-plan.yaml`, `ops/rollback-plan.yaml`  
    - Task: define rollout steps, checks, and a safe rollback plan.
 
-3. **Monitoring & Metrics Team**  
+2. **Monitoring & Metrics Team**  
    - Files: `monitoring/playbook.md`, `monitoring/metrics.yaml`  
    - Task: define KPIs/SLIs, thresholds, and monitoring guidelines.
 
-4. **Documentation & Standards Team**  
+3. **Documentation & Standards Team**  
    - Files: `governance/style-guide.md`, `governance/contribution-standards.md`  
    - Task: enforce headings, tone, structure, and contribution rules.
 
-5. **Incident Response Team**  
+4. **Incident Response Team**  
    - Files: `runbooks/incident-response.md`, `runbooks/postmortem-template.md`  
    - Task: prepare an incident runbook and a postmortem template.
 
@@ -162,6 +162,7 @@ devops-release/
 - Scope: documentation for operations, monitoring, incident response, and standards
 - Key Changes: (fill in)
 - Risks/Assumptions: (fill in)
+```
 
 ## 12) Retrospective Prompts
 	•	Where did conflicts occur and how could they have been prevented?
