@@ -1,0 +1,28 @@
+name: Validate YAMLs
+
+on:
+  pull_request:
+    paths:
+      - '**/*.yaml'
+      - '**/*.yml'
+  push:
+    paths:
+      - '**/*.yaml'
+      - '**/*.yml'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install yamllint
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y yamllint
+
+      - name: Run yamllint on YAML files
+        run: |
+          echo "Running yamllint..."
+          yamllint -d "{extends: default, rules: {line-length: disable}}" .
