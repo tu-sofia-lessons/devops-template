@@ -1,0 +1,115 @@
+# Postmortem Template
+version: "1.0"
+
+# SUMMARY - Brief overview
+summary:
+  incident_id: "INC-YYYY-MM-DD-###"
+  date: "YYYY-MM-DD"
+  severity: "Critical / High / Medium / Low"
+  author: "Your Name"
+  reviewers: []
+  brief_description: |
+    [2-3 sentences describing what happened]
+    
+    Example: On June 15th, incorrect API endpoints were published in 
+    documentation, causing 200+ support tickets. Issue was live for 
+    3 hours before detection and correction.
+
+# IMPACT - Who and what was affected
+impact:
+  users:
+    number_affected: 0
+    user_segments:
+      - "[e.g., API developers]"
+      - "[e.g., mobile app users]"
+  
+  business:
+    severity_level: "[Critical/High/Medium/Low]"
+    support_tickets_created: 0
+    revenue_impact: "[monetary value or N/A]"
+    reputation_damage: "[social media mentions, complaints]"
+  
+  duration:
+    time_to_detect: "[e.g., 45 minutes]"
+    time_to_resolve: "[e.g., 2 hours 30 minutes]"
+    total_downtime: "[e.g., 3 hours 15 minutes]"
+
+# TIMELINE - Chronological events
+timeline:
+  note: "All times in UTC"
+  events:
+    - time: "HH:MM"
+      event: "[What happened]"
+      actor: "[Who did it or system that triggered it]"
+    
+    - time: "HH:MM"
+      event: "[What happened]"
+      actor: "[Who did it]"
+    
+    - time: "HH:MM"
+      event: "Incident detected"
+      actor: "[How/who detected it]"
+    
+    - time: "HH:MM"
+      event: "Incident declared"
+      actor: "Incident Coordinator"
+    
+    - time: "HH:MM"
+      event: "Root cause identified"
+      actor: "Incident Team"
+    
+    - time: "HH:MM"
+      event: "Fix deployed"
+      actor: "[Engineer name]"
+    
+    - time: "HH:MM"
+      event: "Incident resolved"
+      actor: "Incident Coordinator"
+
+# ROOT CAUSE - Why it happened
+root_cause:
+  primary_cause: |
+    [Technical explanation of what caused the incident]
+    
+    Example: Documentation was updated from draft specs that didn't 
+    match production. PR review failed to catch version mismatch.
+  
+  contributing_factors:
+    - "[e.g., Time pressure to meet deadline]"
+    - "[e.g., Insufficient reviewer knowledge]"
+    - "[e.g., Missing automated validation]"
+    - "[e.g., Lack of pre-deployment checks]"
+
+# WHAT WENT WELL - Positive aspects
+what_went_well:
+  - "[e.g., Team responded quickly once alerted]"
+  - "[e.g., Fix deployed in under 1 hour]"
+  - "[e.g., Clear communication kept stakeholders informed]"
+  - "[e.g., No data loss or security breach]"
+
+# WHAT WENT WRONG - Problems identified
+what_went_wrong:
+  - "[e.g., Detection took too long - no monitoring]"
+  - "[e.g., PR review process failed to catch error]"
+  - "[e.g., No rollback procedure available]"
+  - "[e.g., Delayed customer communication]"
+
+# ACTION ITEMS - Improvements to implement
+action_items:
+  - action: "[Specific improvement to implement]"
+    owner: "[Person responsible]"
+    due_date: "YYYY-MM-DD"
+    priority: "High / Medium / Low"
+    status: "To Do / In Progress / Done"
+  
+  - action: "[Another improvement]"
+    owner: "[Person responsible]"
+    due_date: "YYYY-MM-DD"
+    priority: "High / Medium / Low"
+    status: "To Do / In Progress / Done"
+  
+  - action: "[Process improvement]"
+    owner: "[Person responsible]"
+    due_date: "YYYY-MM-DD"
+    priority: "High / Medium / Low"
+    status: "To Do / In Progress / Done"
