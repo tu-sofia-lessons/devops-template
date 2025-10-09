@@ -1,0 +1,30 @@
+# Alert Rules
+# =========================
+alerts:
+  - name: stalled_prs
+    description: "No activity on pull requests for over 24 hours"
+    condition: "no_activity > 24h"
+    severity: warning
+    action: "Ping PR owner and reviewer in team chat"
+    channel: "team-chat"
+
+  - name: failed_merge
+    description: "Merge to develop or main failed in CI pipeline"
+    condition: "ci_pipeline_status == failed"
+    severity: critical
+    action: "Notify on-call engineer and create incident issue"
+    channel: "on-call-sre"
+
+  - name: low_review_rate
+    description: "Less than 70% of PRs reviewed within 24h"
+    condition: "review_completion_rate < 70%"
+    severity: warning
+    action: "Notify team lead and schedule sync review"
+    channel: "team-chat"
+
+  - name: delayed_release
+    description: "Develop → main merge pending more than 12h after approval"
+    condition: "pending_release_time > 12h"
+    severity: info
+    action: "Post reminder in devops-dashboard"
+    channel: "devops-dashboard"

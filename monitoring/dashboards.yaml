@@ -1,0 +1,28 @@
+dashboards:
+  - name: DevOps Overview
+    description: "High-level KPIs for PR flow, reviews, and releases"
+    source: "Grafana"
+    path: "devops/overview"
+    owner: "Team GOV"
+    tags: ["kpi", "team-gov", "release"]
+
+  - name: CI/CD Pipeline Health
+    description: "Visualizes build success rates and durations from GitHub Actions"
+    source: "Grafana"
+    path: "ci-cd/pipeline-health"
+    owner: "DevOps Team"
+    tags: ["ci", "cd", "github-actions", "sre"]
+
+  - name: PR Review Flow
+    description: "Tracks PR review completion times and bottlenecks"
+    source: "Grafana"
+    path: "pr/review-flow"
+    owner: "Team GOV"
+    tags: ["review", "collaboration", "efficiency"]
+
+  - name: Incident Trends
+    description: "Monitors critical failures, alerts, and incident response over time"
+    source: "Grafana"
+    path: "incidents/trends"
+    owner: "SRE Team"
+    tags: ["alerts", "reliability", "sre"]
