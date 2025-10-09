@@ -1,10 +1,81 @@
----
+
+# ============================
+# Key Performance Indicators (KPIs)
+# ============================
 kpis:
   - name: lead_time_for_changes
+    description: "Average time from commit to merge into develop"
+    type: time
     target: "≤ 1 day"
+    sli: "Mean PR merge duration"
+    slo: "90% of PRs merged within 24h"
+
   - name: review_completion_rate
+    description: "Percentage of pull requests reviewed and approved within 24h"
+    type: percentage
     target: "≥ 90%"
+    sli: "Reviewed PRs / total PRs"
+    slo: "≥ 95% review completion rate per sprint"
+
+  - name: conflict_resolution_time
+    description: "Average time to resolve merge conflicts"
+    type: time
+    target: "≤ 30 min"
+    sli: "Time between conflict detection and resolution"
+    slo: "≥ 85% resolved within 30 min"
+
+  - name: deployment_success_rate
+    description: "Percentage of successful merges from develop → main"
+    type: percentage
+    target: "≥ 98%"
+    sli: "Successful release merges / total release merges"
+    slo: "≥ 99% success rate across releases"
+
+# ============================
+# Alerts and Thresholds
+# ============================
 alerts:
   - name: stalled_prs
-    condition: "no activity > 24h"
+    description: "No activity on pull requests for over 24 hours"
+    condition: "no_activity > 24h"
+    severity: warning
+    action: "Ping PR owner and reviewer in team chat"
     channel: "team-chat"
+
+  - name: failed_merge
+    description: "Merge to develop or main failed in CI pipeline"
+    condition: "ci_pipeline_status == failed"
+    severity: critical
+    action: "Notify on-call engineer and create incident issue"
+    channel: "on-call-sre"
+
+  - name: low_review_rate
+    description: "Less than 70% of PRs reviewed within 24h"
+    condition: "review_completion_rate < 70%"
+    severity: warning
+    action: "Notify team lead and schedule sync review"
+    channel: "team-chat"
+
+  - name: delayed_release
+    description: "Develop → main merge pending more than 12h after approval"
+    condition: "pending_release_time > 12h"
+    severity: info
+    action: "Post reminder in devops-dashboard"
+    channel: "devops-dashboard"
+
+# ============================
+# Data Sources and Collection
+# ============================
+collection:
+  frequency: "every 5 minutes"
+  sources:
+    - name: github_api
+      description: "Collects PR activity, reviews, and merge times"
+    - name: github_actions
+      description: "Tracks CI/CD pipeline success and build durations"
+    - name: prometheus_exporter
+      description: "Aggregates metrics from GitHub API and pipelines"
+  visualization:
+    tool: "Grafana"
+    dashboard: "DevOps Simulation Monitoring"
+  retention: "30 days"
