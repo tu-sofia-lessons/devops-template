@@ -1,1 +1,66 @@
-dashboards: []
+---
+# ============================
+# Monitoring Dashboards
+# ============================
+
+dashboards:
+  - name: devops_overview
+    description: "Main dashboard showing build health, PR activity, and merge success rates"
+    tool: "Grafana"
+    panels:
+      - title: "Lead Time for Changes"
+        metric: "lead_time_for_changes"
+        visualization: "line"
+        unit: "hours"
+      - title: "Review Completion Rate"
+        metric: "review_completion_rate"
+        visualization: "bar"
+        unit: "%"
+      - title: "Conflict Resolution Time"
+        metric: "conflict_resolution_time"
+        visualization: "gauge"
+        unit: "minutes"
+      - title: "Deployment Success Rate"
+        metric: "deployment_success_rate"
+        visualization: "bar"
+        unit: "%"
+
+  - name: ci_cd_health
+    description: "Tracks CI/CD pipeline performance and failure trends"
+    tool: "Grafana"
+    panels:
+      - title: "Build Success Rate"
+        metric: "ci_pipeline_success_rate"
+        visualization: "line"
+        unit: "%"
+      - title: "Failed Merges"
+        metric: "failed_merge"
+        visualization: "table"
+        unit: "count"
+      - title: "Deployment Duration"
+        metric: "deployment_time"
+        visualization: "histogram"
+        unit: "minutes"
+
+  - name: release_monitor
+    description: "Shows pending releases and stalled PRs"
+    tool: "Grafana"
+    panels:
+      - title: "Stalled PRs"
+        metric: "stalled_prs"
+        visualization: "table"
+      - title: "Delayed Releases"
+        metric: "delayed_release"
+        visualization: "gauge"
+        unit: "hours"
+
+# ============================
+# Ownership
+# ============================
+
+owner_team: "GOV (Governance & Standards)"
+related_files:
+  - governance/style-guide.yaml
+  - governance/contribution-standards.yaml
+  - governance/owners.yaml
+
