@@ -78,3 +78,95 @@ collection:
     tool: "Grafana"
     dashboard: "DevOps Simulation Monitoring"
   retention: "30 days"
+
+### High Error Log Rate Monitor
+title: High Error Log Rate Monitor
+severity: S4
+display:
+  header: High Log Error Rate
+  description: This monitor will trigger an alert when we have a rate of error logs.
+  resourceHeaderLabels:
+    - workload
+  contextHeaderLabels:
+    - cluster
+    - namespace
+evaluationInterval:
+  interval: 1m
+  pendingFor: 0s
+model:
+  queries:
+    - name: threshold_input_query
+      dataType: logs
+      sqlPipeline:
+        selectors:
+          - key: _time
+            origin: root
+            type: string
+            processors:
+              - op: toStartOfInterval
+                args:
+                  - 1 minutes
+            alias: bucket_timestamp
+          - key: workload
+            origin: root
+            type: string
+            alias: workload
+          - key: namespace
+            origin: root
+            type: string
+            alias: namespace
+          - key: cluster
+            origin: root
+            type: string
+            alias: cluster
+          - key: "*"
+            origin: root
+            type: string
+            processors:
+              - op: count
+            alias: logs_total
+        groupBy:
+          - key: _time
+            origin: root
+            type: string
+            processors:
+              - op: toStartOfInterval
+                args:
+                  - 1 minutes
+          - key: workload
+            origin: root
+            type: string
+            alias: workload
+          - key: namespace
+            origin: root
+            type: string
+            alias: namespace
+          - key: cluster
+            origin: root
+            type: string
+            alias: cluster
+        orderBy:
+          - selector:
+              key: bucket_timestamp
+              origin: root
+              type: string
+            direction: ASC
+        limit:
+        filters:
+          conditions:
+            - filters:
+                - op: match
+                  value: error
+              key: level
+              origin: root
+              type: string
+          operator: and
+      instantRollup: 1 minutes
+  thresholds:
+    - name: threshold_1
+      inputName: threshold_input_query
+      operator: gt
+      values:
+        - 150
+noDataState: OK
+measurementType: event
