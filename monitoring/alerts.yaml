@@ -1,8 +1,5 @@
----
-# ============================
-# Alerts Configuration
-# ============================
-
+# Alert Rules
+# =========================
 alerts:
   - name: stalled_prs
     description: "No activity on pull requests for over 24 hours"
@@ -31,21 +28,3 @@ alerts:
     severity: info
     action: "Post reminder in devops-dashboard"
     channel: "devops-dashboard"
-
-# ============================
-# Alerting Rules and Routing
-# ============================
-
-routing:
-  escalation_policy:
-    - severity: critical
-      action: "Notify Incident Response Team immediately"
-    - severity: warning
-      action: "Ping responsible team lead in #team-chat"
-    - severity: info
-      action: "Log event to monitoring dashboard"
-
-notification_settings:
-  default_channel: "team-chat"
-  fallback_channel: "on-call-sre"
-  cooldown_period: "15m"
