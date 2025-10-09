@@ -1,66 +1,28 @@
----
-# ============================
-# Monitoring Dashboards
-# ============================
-
 dashboards:
-  - name: devops_overview
-    description: "Main dashboard showing build health, PR activity, and merge success rates"
-    tool: "Grafana"
-    panels:
-      - title: "Lead Time for Changes"
-        metric: "lead_time_for_changes"
-        visualization: "line"
-        unit: "hours"
-      - title: "Review Completion Rate"
-        metric: "review_completion_rate"
-        visualization: "bar"
-        unit: "%"
-      - title: "Conflict Resolution Time"
-        metric: "conflict_resolution_time"
-        visualization: "gauge"
-        unit: "minutes"
-      - title: "Deployment Success Rate"
-        metric: "deployment_success_rate"
-        visualization: "bar"
-        unit: "%"
+  - name: DevOps Overview
+    description: "High-level KPIs for PR flow, reviews, and releases"
+    source: "Grafana"
+    path: "devops/overview"
+    owner: "Team GOV"
+    tags: ["kpi", "team-gov", "release"]
 
-  - name: ci_cd_health
-    description: "Tracks CI/CD pipeline performance and failure trends"
-    tool: "Grafana"
-    panels:
-      - title: "Build Success Rate"
-        metric: "ci_pipeline_success_rate"
-        visualization: "line"
-        unit: "%"
-      - title: "Failed Merges"
-        metric: "failed_merge"
-        visualization: "table"
-        unit: "count"
-      - title: "Deployment Duration"
-        metric: "deployment_time"
-        visualization: "histogram"
-        unit: "minutes"
+  - name: CI/CD Pipeline Health
+    description: "Visualizes build success rates and durations from GitHub Actions"
+    source: "Grafana"
+    path: "ci-cd/pipeline-health"
+    owner: "DevOps Team"
+    tags: ["ci", "cd", "github-actions", "sre"]
 
-  - name: release_monitor
-    description: "Shows pending releases and stalled PRs"
-    tool: "Grafana"
-    panels:
-      - title: "Stalled PRs"
-        metric: "stalled_prs"
-        visualization: "table"
-      - title: "Delayed Releases"
-        metric: "delayed_release"
-        visualization: "gauge"
-        unit: "hours"
+  - name: PR Review Flow
+    description: "Tracks PR review completion times and bottlenecks"
+    source: "Grafana"
+    path: "pr/review-flow"
+    owner: "Team GOV"
+    tags: ["review", "collaboration", "efficiency"]
 
-# ============================
-# Ownership
-# ============================
-
-owner_team: "GOV (Governance & Standards)"
-related_files:
-  - governance/style-guide.yaml
-  - governance/contribution-standards.yaml
-  - governance/owners.yaml
-
+  - name: Incident Trends
+    description: "Monitors critical failures, alerts, and incident response over time"
+    source: "Grafana"
+    path: "incidents/trends"
+    owner: "SRE Team"
+    tags: ["alerts", "reliability", "sre"]
